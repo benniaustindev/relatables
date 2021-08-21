@@ -1,0 +1,12 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.areValidRelatables = exports.isValidRelatable = exports.getParent = exports.removeParent = exports.getChildren = exports.setChildren = exports.clearAllRelatables = void 0;
+var maps_1 = require("./maps");
+Object.defineProperty(exports, "clearAllRelatables", { enumerable: true, get: function () { return maps_1.clearAllRelatables; } });
+Object.defineProperty(exports, "setChildren", { enumerable: true, get: function () { return maps_1.setChildren; } });
+Object.defineProperty(exports, "getChildren", { enumerable: true, get: function () { return maps_1.getChildren; } });
+Object.defineProperty(exports, "removeParent", { enumerable: true, get: function () { return maps_1.removeParent; } });
+Object.defineProperty(exports, "getParent", { enumerable: true, get: function () { return maps_1.getParent; } });
+var validate_1 = require("./validate");
+Object.defineProperty(exports, "isValidRelatable", { enumerable: true, get: function () { return validate_1.isValidRelatable; } });
+Object.defineProperty(exports, "areValidRelatables", { enumerable: true, get: function () { return validate_1.areValidRelatables; } });

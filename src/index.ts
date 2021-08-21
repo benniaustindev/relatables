@@ -1,0 +1,102 @@
+import {
+	getParent,
+	getInclusiveAncestors,
+	getAncestors,
+	getChildren,
+	getFirstChild,
+	getLastChild,
+	getInclusiveSiblings,
+	getSiblings,
+	getPreviousSiblings,
+	getNextSiblings,
+	getNextSibling,
+	getPreviousSibling,
+} from "./traversal";
+
+import { hasChild, hasChildren, hasDescendent } from "./comparison";
+import {
+	removeChild,
+	removeParent,
+	removeChildren,
+	removeAllChildren,
+} from "./remove";
+
+import {
+	appendChild,
+	appendChildren,
+	prependChild,
+	prependChildren,
+	insertAfter,
+	insertBefore,
+	replace,
+} from "./insertion";
+
+import { areValidRelatables, isValidRelatable } from "./utilities/validate";
+import { clearAllRelatables, setChildren } from "./utilities/maps";
+
+export {
+	areValidRelatables,
+	isValidRelatable,
+	clearAllRelatables,
+	setChildren,
+	appendChild,
+	appendChildren,
+	prependChild,
+	prependChildren,
+	insertAfter,
+	insertBefore,
+	replace,
+	getParent,
+	getInclusiveAncestors,
+	getAncestors,
+	getChildren,
+	getFirstChild,
+	getLastChild,
+	getInclusiveSiblings,
+	getSiblings,
+	getPreviousSiblings,
+	getNextSiblings,
+	getNextSibling,
+	getPreviousSibling,
+	hasChild,
+	hasChildren,
+	hasDescendent,
+	removeChild,
+	removeParent,
+	removeChildren,
+	removeAllChildren,
+};
+
+const relatableFunctions = {
+	areValidRelatables,
+	isValidRelatable,
+	clearAllRelatables,
+	setChildren,
+	appendChild,
+	appendChildren,
+	prependChild,
+	prependChildren,
+	insertAfter,
+	insertBefore,
+	replace,
+	getParent,
+	getInclusiveAncestors,
+	getAncestors,
+	getChildren,
+	getFirstChild,
+	getLastChild,
+	getInclusiveSiblings,
+	getSiblings,
+	getPreviousSiblings,
+	getNextSiblings,
+	getNextSibling,
+	getPreviousSibling,
+	hasChild,
+	hasChildren,
+	hasDescendent,
+	removeChild,
+	removeParent,
+	removeChildren,
+	removeAllChildren,
+};
+export default relatableFunctions;

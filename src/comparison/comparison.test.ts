@@ -1,0 +1,78 @@
+import { clearAllRelatables, setChildren } from "../utilities";
+import { hasChildren, hasChild, hasDescendent, hasAncestor } from ".";
+
+const root = { name: "root" };
+const parent1 = { name: "parent 1" };
+const parent2 = { name: "parent 2" };
+const parent3 = { name: "parent 3" };
+const child1 = { name: "child 1" };
+const child2 = { name: "child 2" };
+const child3 = { name: "child 3" };
+const child4 = { name: "child 4" };
+const grandChild1 = { name: "grandChild 1" };
+const grandChild2 = { name: "grandChild 2" };
+const grandChild3 = { name: "grandChild 3" };
+const grandChild4 = { name: "grandChild 4" };
+
+clearAllRelatables();
+setChildren(root, parent1, parent2, parent3);
+setChildren(parent1, child1, child2);
+setChildren(parent2, child3, child4);
+setChildren(parent3);
+setChildren(child1, grandChild1, grandChild2);
+setChildren(child2, grandChild3, grandChild4);
+test("hasChildren should be able to tell whether something has is a parent or not", () => {
+	expect(hasChildren(root)).toBe(true);
+	expect(hasChildren(parent1)).toBe(true);
+	expect(hasChildren(parent2)).toBe(true);
+	expect(hasChildren(parent3)).toBe(false);
+	expect(hasChildren(child1)).toBe(true);
+	expect(hasChildren(child2)).toBe(true);
+	expect(hasChildren(child3)).toBe(false);
+	expect(hasChildren(child4)).toBe(false);
+	expect(hasChildren(grandChild1)).toBe(false);
+	expect(hasChildren(grandChild2)).toBe(false);
+	expect(hasChildren(grandChild2)).toBe(false);
+	expect(hasChildren(grandChild2)).toBe(false);
+});
+test("hasChild should be able to tell whether something has a specific child or not", () => {
+	expect(hasChild(root, parent1)).toBe(true);
+	expect(hasChild(parent1, child1)).toBe(true);
+	expect(hasChild(parent2, child2)).toBe(false);
+	expect(hasChild(parent3, child3)).toBe(false);
+	expect(hasChild(parent1, child2)).toBe(true);
+});
+test("hasDescendent should be able to tell whether something has a specific descendent nor not", () => {
+	expect(hasDescendent(root, parent1)).toBe(true);
+	expect(hasDescendent(root, parent2)).toBe(true);
+	expect(hasDescendent(root, parent3)).toBe(true);
+	expect(hasDescendent(root, child1)).toBe(true);
+	expect(hasDescendent(root, child2)).toBe(true);
+	expect(hasDescendent(root, child2)).toBe(true);
+	expect(hasDescendent(root, child3)).toBe(true);
+	expect(hasDescendent(root, grandChild1)).toBe(true);
+	expect(hasDescendent(root, grandChild1)).toBe(true);
+	expect(hasDescendent(root, grandChild1)).toBe(true);
+	expect(hasDescendent(root, grandChild1)).toBe(true);
+	expect(hasDescendent(parent1, child1)).toBe(true);
+	expect(hasDescendent(parent1, child2)).toBe(true);
+	expect(hasDescendent(parent1, child3)).toBe(false);
+	expect(hasDescendent(parent1, child4)).toBe(false);
+});
+test("hasAncestor should be able to tell whether something has a specific ancestor nor not", () => {
+	expect(hasAncestor(parent1, root)).toBe(true);
+	expect(hasAncestor(parent2, root)).toBe(true);
+	expect(hasAncestor(parent3, root)).toBe(true);
+	expect(hasAncestor(child1, root)).toBe(true);
+	expect(hasAncestor(child2, root)).toBe(true);
+	expect(hasAncestor(child2, root)).toBe(true);
+	expect(hasAncestor(child3, root)).toBe(true);
+	expect(hasAncestor(grandChild1, root)).toBe(true);
+	expect(hasAncestor(grandChild1, root)).toBe(true);
+	expect(hasAncestor(grandChild1, root)).toBe(true);
+	expect(hasAncestor(grandChild1, root)).toBe(true);
+	expect(hasAncestor(child1, parent1)).toBe(true);
+	expect(hasAncestor(child2, parent1)).toBe(true);
+	expect(hasAncestor(child3, parent1)).toBe(false);
+	expect(hasAncestor(child4, parent1)).toBe(false);
+});
